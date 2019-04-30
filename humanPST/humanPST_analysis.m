@@ -31,15 +31,15 @@ addpath(path_to_spm(1:(end-5)));
 %% choose parameters
 % for first level analysis                                                  % choose among:
 sub_index               = 1;                               % ALL: 1:22; R: [1:14 16:17 19:22], L: 15 AMB: 18
-task                    = 'PEB2';                                        % 'preprocessing'run_DCM', 'model_comp', 'PEB3'
+task                    = 'PEB1';                                        % 'preprocessing'run_DCM', 'model_comp', 'PEB3'
 electrodes              = 'right_frontal';                                   % left_frontal, right_frontal
 n_bins                  = 4;                                                % 4, 8 or 16
 all_model_architecture  = {'no_conn', 'FWBW', 'FW'};                         % 'no_conn', 'FWBW','FW1'
 effect                  = 'random';                                         % 'random' or 'fixed'
 
 % for plotting or 2nd level analysis
-model_architecture  = 'FWBW';                                                % 'no_conn', 'FWBW','FW1'
-tbf                 = {};                  %'rawbeta1', 'rawbeta2', 'monoexp'
+model_architecture  = 'no_conn';                                                % 'no_conn', 'FWBW','FW1'
+tbf                 = {'monoexp'};                  %'rawbeta1', 'rawbeta2', 'monoexp'
 runs =               1:6;
 
 %% Step 0: Create subject prefixes
@@ -126,8 +126,8 @@ switch task
         [PEB, BMA] = humanPST_peb1(sub_index, run, electrodes, n_bins, tbf, model_architecture);
         %% Step 9: PEB of PEBs
     case 'PEB2'
-        %[PEB, PEB_all, BMA] = humanPST_peb2(sub_index, runs, electrodes, n_bins, tbf, model_architecture);
-        [PEB, BMA] = humanPST_peb_pooled(sub_index, runs, electrodes, n_bins, tbf, model_architecture)
+        [PEB, PEB_all, BMA] = humanPST_peb2(sub_index, runs, electrodes, n_bins, tbf, model_architecture);
+        %[PEB, BMA] = humanPST_peb_pooled(sub_index, runs, electrodes, n_bins, tbf, model_architecture)
 
     case 'PEB3'
         [PEB3, PEB_all3, BMA] = humanPST_peb3(sub_index, runs, electrodes, n_bins, tbf, model_architecture);
