@@ -1,7 +1,7 @@
 function regressors = humanPST_create_PEB_regressor(s, run,  electrodes, n_bins, spectra, model_architecture)
 %% info needed
 home_dir = pwd;
-cd(strcat(home_dir, '/analysis_DCM/', electrodes))
+cd(strcat(home_dir, [filesep 'analysis_DCM' filesep], electrodes))
 %% create temporal basis functions
 mean_regressor = ones(n_bins,1);
 
