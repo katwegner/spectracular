@@ -7,7 +7,7 @@ function [PEB, BMA] = humanPST_peb1(s, run, electrodes, n_bins, spectra, model_a
 fprintf(['Subject: ', num2str(s) ,', Run: ', num2str(run),'\n\n'])
 home_dir = pwd;
 plot_parameters = 0;
-analysis_dir =  strcat('./analysis_DCM/', electrodes, '/', model_architecture); 
+analysis_dir =  strcat(home_dir, filesep, 'analysis_DCM', filesep, electrodes, filesep, model_architecture); 
 
 %% 2.  Get GCM and create PEB regressors
 
@@ -15,7 +15,7 @@ GCM = humanPST_create_GCM(s, run, electrodes, n_bins, model_architecture);
 clear PEB BMA parameters
 M = struct();
 M.X = humanPST_create_PEB_regressor(s, run,  electrodes, n_bins, spectra, model_architecture);
-field = {'T' 'G', 'A'};
+field = {'A' 'G' 'T'};
 
 cd(analysis_dir)
 

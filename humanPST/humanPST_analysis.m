@@ -38,7 +38,7 @@ all_model_architecture  = {'no_conn', 'FWBW', 'FW'};                         % '
 effect                  = 'random';                                         % 'random' or 'fixed'
 
 % for plotting or 2nd level analysis
-model_architecture  = 'no_conn';                                                % 'no_conn', 'FWBW','FW1'
+model_architecture  = 'FWBW';                                                % 'no_conn', 'FWBW','FW1'
 tbf                 = {'monoexp'};                  %'rawbeta1', 'rawbeta2', 'monoexp'
 runs =               1:6;
 

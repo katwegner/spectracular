@@ -1,7 +1,7 @@
 function regressors = humanPST_create_PEB_regressor(s, run,  electrodes, n_bins, spectra, model_architecture)
 %% info needed
 home_dir = pwd;
-cd(strcat(home_dir, [filesep 'analysis_DCM' filesep], electrodes))
+cd(strcat(home_dir, filesep, 'analysis_DCM', filesep, electrodes))
 %% create temporal basis functions
 mean_regressor = ones(n_bins,1);
 
@@ -43,7 +43,7 @@ for s = 1:length(spectra)
         case 'beta1'
             regressor = beta1_temporal_basis_function;
         case'rawbeta1'
-            regressor = rawbeta1_temporal_basis_function;
+            regressor = rawbeta1_temporal_basis_function_centered;
         case'beta2'
             regressor = beta2_temporal_basis_function;
         case'rawbeta2'
